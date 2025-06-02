@@ -12,7 +12,6 @@ function TwiceIncrement()
 
 // - State Uppdates are async in nature (Means it will take a previous value not the update value)
 // you need to use updater function for multiple state update
-
     const countIncreaseTwice = () => {
         setCount(prevCount => prevCount+step)
         setCount(prevCount => prevCount+step)
