@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'  
-import Counter from './components/useState/Counter'
-import MultipleState from './components/useState/MultipleState'
+import './App.css'   
+import TwiceIncrement from './components/useState/TwiceIncrement'
 
 function App() {
   
@@ -11,7 +10,7 @@ function App() {
     <>
       <div className="App">
         <header className="App-header"> 
-        <MultipleState />
+        <TwiceIncrement />
         </header>
       </div>
     </>
