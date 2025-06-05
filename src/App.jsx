@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'   
-import AddNewCountAndIncreaseCount from './components/useState/AddNewCountAndIncreaseCount'
+import Form from './components/useState/Form'
 
 function App() {
   
@@ -10,7 +10,7 @@ function App() {
     <>
       <div className="App">
         <header className="App-header"> 
-        <AddNewCountAndIncreaseCount />
+        <Form />
         </header>
       </div>
     </>
