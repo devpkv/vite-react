@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'   
-import Form from './components/useState/Form'
+import ColorPicker from './components/useState/ColorPicker'
 
 function App() {
   
@@ -10,7 +10,7 @@ function App() {
     <>
       <div className="App">
         <header className="App-header"> 
-        <Form />
+        <ColorPicker />
         </header>
       </div>
     </>
