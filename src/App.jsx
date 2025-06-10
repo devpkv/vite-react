@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'   
-import DigitalClock from './components/useEffect/DigitalClock'
+import './App.css'    
+import ExampleWithHtml from './components/useRef/ExampleWithHtml'
 
 function App() {
   
@@ -10,7 +10,7 @@ function App() {
     <>
       <div className="App">
         <header className="App-header"> 
-        <DigitalClock />
+        <ExampleWithHtml />
         </header>
       </div>
     </>
