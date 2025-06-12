@@ -1,8 +1,11 @@
+import { useEffect } from "react";
 import useCounter from "./useCounter";
 
 function CounterExample()
 {
     const { count, increment, decrement, reset} = useCounter();
+
+   
     return(
         <div>
             <h1>Counter Example</h1>
