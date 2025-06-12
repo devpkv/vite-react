@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'      
-import ContextProvider from './components/useContext/ContextProvider'
+import './App.css'       
+import CounterExample from './components/customHooks/CounterExample'
 
 function App() {
   
@@ -10,7 +10,7 @@ function App() {
     <>
       <div className="App">
         <header className="App-header"> 
-        <ContextProvider />
+        <CounterExample />
         </header>
       </div>
     </>
