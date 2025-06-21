@@ -2,7 +2,13 @@ import { useForm } from "react-hook-form";
 
 function ReactHookForm() {
 
-    const {register, handleSubmit, watch, formState : {errors}} = useForm();
+    const {register, handleSubmit, watch, formState : {errors}} = useForm({
+      mode: 'onChange' // This will trigger validation on every change
+      // mode: "onBlur" // This will trigger validation on blur
+      // mode: "onSubmit" // This will trigger validation on submit
+      // mode: "all" // This will trigger validation on all events
+      // mode: "onChange" // This will trigger validation on change
+    });
 
     const onSubmit = (data) => {
         console.log(data);
@@ -74,6 +80,26 @@ function ReactHookForm() {
         {/* Register the email field with a pattern validation */}
         {/* The pattern checks if the email is in a valid format */}
 
+
+        <div>
+          <label htmlFor="password">Password</label>
+          <input type="password" {...register("password",{
+            required: true,
+            minLength: 6,
+            maxLength: 20
+          })} />
+
+          {errors.password && <span>Password must be between 6 and 20 characters</span>}
+        </div>
+        <div>
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <input type="password" {...register("confirmPassword", {
+            validate: (value) => value === watch("password") || "Passwords do not match"
+          })} />
+          {errors.confirmPassword && <span>{errors.confirmPassword.message}</span>}
+        </div>
+
+
         <button>Submit</button>
         <button type="reset">Reset</button>
     </form>
@@ -83,6 +109,8 @@ function ReactHookForm() {
             <h2>Realtime Form Data</h2>
             <p><strong>Name:</strong> {WatchedName}</p>
             <p><strong>Email:</strong> {WatchedEmail}</p>
+            <p><strong>Password:</strong> {watch("password")}</p>
+            <p><strong>Confirm Password:</strong> {watch("confirmPassword")}</p> 
         </div>
     </div>
     </div>
