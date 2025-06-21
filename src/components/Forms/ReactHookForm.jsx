@@ -18,11 +18,12 @@ function ReactHookForm() {
     console.log("Watched Email:", WatchedEmail);
 
 
-    const checkIfEmailExists = async () => {
+    const emailExists = ["abs@gmail.com", "pk@gmail.com"];
+    const checkIfEmailExists = async (email) => {
         // Simulate an API call to check if the email exists
-     
-      console.log("Checking if email exists:");
-        return true;
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        // For demonstration, let's assume the email " 
+        return emailExists.includes(email) ? true : false;
     }
 
   return (
@@ -48,16 +49,28 @@ function ReactHookForm() {
 
         <label htmlFor="email">Email:</label>
         <input {...register("email", {pattern : /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i ,
+          required: true,
+          // Custom validation function to check if the email exists
+          // This function will be called when the form is submitted
+          // If the email exists, it will return an error message
+          // If the email does not exist, it will return true
+          // The `validate` option allows you to define custom validation logic
+          // The `checkEmail` function is an asynchronous function that checks if the email exists
+          // The `notAdmin` function checks if the email is not "
           validate: {
-            checkEmail: async () => {
-              console.log("Validating email:", WatchedEmail);
-              const exist = await checkIfEmailExists();
-              return !exist || "Email already exists";
-          }
+            checkEmail: async(value) => { 
+             // console.log("Validating email:", value);
+
+             const emailExists = await checkIfEmailExists(value);
+           
+             // console.log("Email exists:", emailExists);
+              return emailExists ? "Email already exists" : true;
+            },
+            notAdmin: (value) => value !== "Admin@gmail.com" || "This email cannot be Admin"
           }
         }
         )} />
-        {errors.email && <span>Invalid email address</span>}
+        {errors.email && <span>{errors.email.message || "Invalid email address"}</span>}
         {/* Register the email field with a pattern validation */}
         {/* The pattern checks if the email is in a valid format */}
 
